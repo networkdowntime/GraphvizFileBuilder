@@ -53,7 +53,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		StringBuffer graph = new StringBuffer();
 		graph.append("subgraph cluster_" + encodeName(subBlockName) + " {\n");
 		graph.append("color=black\n");
-		graph.append("label=\"" + subBlockName + "\"\n");
+		graph.append("label=\"" + escapeString(subBlockName) + "\"\n");
 		return graph.toString();
 
 	}
@@ -78,7 +78,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	@Override
 	public String getLabel(String labelName) {
 		StringBuffer graph = new StringBuffer();
-		graph.append("label=\"" + labelName + "\";\n");
+		graph.append("label=\"" + escapeString(labelName) + "\";\n");
 		return graph.toString();
 	}
 
@@ -91,7 +91,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	public String getBeginRecord(String recordName, String numberOfRows) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\"" + encodeName(recordName) + "\" [\n");
-		sb.append("\tlabel = \"{<T_NAME> " + recordName + numberOfRows);
+		sb.append("\tlabel = \"{<T_NAME> " + escapeString(recordName + numberOfRows));
 
 		return sb.toString();
 	}
@@ -100,7 +100,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	public String getBeginRecord(String recordName, String recordLabel, String numberOfRows) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\"" + encodeName(recordName) + "\" [\n");
-		sb.append("\tlabel = \"{<T_NAME> " + recordLabel.replaceAll("<", "\\\\<").replaceAll(">", "\\\\>") + numberOfRows);
+		sb.append("\tlabel = \"{<T_NAME> " + escapeString(recordLabel + numberOfRows));
 
 		return sb.toString();
 	}
@@ -113,7 +113,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	@Override
 	public String addRecordField(String fieldName, String field) {
 		StringBuffer sb = new StringBuffer();
-		sb.append("\t\n|<" + fieldName + "> " + field);
+		sb.append("\t\n|<" + escapeString(fieldName) + "> " + escapeString(field));
 		return sb.toString();
 	}
 
@@ -149,7 +149,7 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
 
 		StringBuffer graph = new StringBuffer();
-		graph.append(encodeName(record) + "->" + encodeName(referencesRecord) + " [ label = \"" + edgeLabel + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
+		graph.append(encodeName(record) + "->" + encodeName(referencesRecord) + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
 		return graph.toString();
 	}
 

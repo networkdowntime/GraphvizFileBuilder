@@ -6,6 +6,10 @@ public abstract class GraphvizRenderer {
 		return name.replaceAll("\\.", "_");
 	}
 
+	String escapeString(String string) {
+		return string.replaceAll("<", "\\\\<").replaceAll(">", "\\\\>");
+	}
+	
 	public abstract String getHeader();
 
 	public abstract String getFooter();
