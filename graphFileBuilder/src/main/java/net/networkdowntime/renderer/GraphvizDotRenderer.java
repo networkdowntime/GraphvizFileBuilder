@@ -1,12 +1,26 @@
 package net.networkdowntime.renderer;
 
+/**
+ * This software is licensed under the MIT license
+ * Copyright (c) 2015 Ryan Wiles
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
+ * files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
+ * modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software 
+ * is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR 
+ * IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * @author rwiles
+ *
+ */
 public class GraphvizDotRenderer extends GraphvizRenderer {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getHeader()
-	 */
 	@Override
 	public String getHeader() {
 		StringBuffer graph = new StringBuffer();
@@ -31,11 +45,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return graph.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getFooter()
-	 */
 	@Override
 	public String getFooter() {
 		StringBuffer graph = new StringBuffer();
@@ -43,11 +52,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return graph.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getBeginCluster(java.lang.String)
-	 */
 	@Override
 	public String getBeginCluster(String subBlockName) {
 		StringBuffer graph = new StringBuffer();
@@ -58,11 +62,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getEndCluster()
-	 */
 	@Override
 	public String getEndCluster() {
 		StringBuffer graph = new StringBuffer();
@@ -70,11 +69,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return graph.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getLabel(java.lang.String)
-	 */
 	@Override
 	public String getLabel(String labelName) {
 		StringBuffer graph = new StringBuffer();
@@ -82,11 +76,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return graph.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getBeginRecord(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public String getBeginRecord(String recordName, String numberOfRows) {
 		StringBuffer sb = new StringBuffer();
@@ -105,11 +94,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return sb.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#addRecordField(java.lang.String, java.lang.String)
-	 */
 	@Override
 	public String addRecordField(String fieldName, String field) {
 		StringBuffer sb = new StringBuffer();
@@ -117,11 +101,6 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return sb.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#getEndRecord()
-	 */
 	@Override
 	public String getEndRecord() {
 		StringBuffer sb = new StringBuffer();
@@ -131,20 +110,11 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 		return sb.toString();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#addEdge(java.lang.String, java.lang.String, java.lang.String)
-	 */
 	@Override
 	public String addEdge(String record, String referencesRecord, String edgeLabel) {
 		return addEdge(record, referencesRecord, edgeLabel, false);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see net.networkdowntime.renderer.GraphvizRenderer#addEdge(java.lang.String, java.lang.String, java.lang.String, boolean)
-	 */
 	@Override
 	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
 
