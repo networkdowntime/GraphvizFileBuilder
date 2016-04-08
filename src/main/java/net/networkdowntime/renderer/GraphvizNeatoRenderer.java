@@ -109,7 +109,7 @@ public class GraphvizNeatoRenderer extends GraphvizRenderer {
 	@Override
 	public String addEdge(String record, String referencesRecord, String edgeLabel) {
 		StringBuffer graph = new StringBuffer();
-		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + edgeLabel + "\" arrowhead=vee, arrowtail=crow, arrowsize=1.0 ];\n");
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=vee, arrowtail=crow, arrowsize=1.0 ];\n");
 		return graph.toString();
 	}
 
@@ -117,7 +117,14 @@ public class GraphvizNeatoRenderer extends GraphvizRenderer {
 	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
 
 		StringBuffer graph = new StringBuffer();
-		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + edgeLabel + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open, boolean solid) {
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" style=\"" + ((solid) ? "solid" : "dotted") + "\" ];\n");
 		return graph.toString();
 	}
 

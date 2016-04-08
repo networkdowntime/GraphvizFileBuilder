@@ -119,8 +119,16 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
 
 		StringBuffer graph = new StringBuffer();
-		graph.append("\"" + encodeName(record) + "\"" + "->" + "\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" ];\n");
 		return graph.toString();
 	}
+
+	@Override
+	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open, boolean solid) {
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" style=\"" + ((solid) ? "solid" : "dotted") + "\" ];\n");
+		return graph.toString();
+	}
+
 
 }

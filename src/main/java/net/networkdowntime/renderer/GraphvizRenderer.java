@@ -47,7 +47,9 @@ public abstract class GraphvizRenderer {
 
 	public abstract String addEdge(String record, String referencesRecord, String edgeLabel);
 
-	public abstract Object addEdge(String name, String name2, String string, boolean b);
+	public abstract Object addEdge(String name, String name2, String string, boolean open);
+
+	public abstract Object addEdge(String name, String name2, String string, boolean open, boolean solid);
 
 	public abstract String getBeginRecord(String recordName, String recordLabel, String numberOfRows);
 
