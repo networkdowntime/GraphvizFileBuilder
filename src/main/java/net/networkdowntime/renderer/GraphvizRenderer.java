@@ -53,4 +53,6 @@ public abstract class GraphvizRenderer {
 
 	public abstract String getBeginRecord(String recordName, String recordLabel, String numberOfRows);
 
+	public abstract String getBeginRecord(String recordName, String recordLabel, String numberOfRows, String color);
+
 }

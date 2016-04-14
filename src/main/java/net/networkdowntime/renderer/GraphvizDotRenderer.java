@@ -95,6 +95,16 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	}
 
 	@Override
+	public String getBeginRecord(String recordName, String recordLabel, String numberOfRows, String color) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("\"" + encodeName(recordName) + "\" [\n");
+		sb.append("\tstyle=filled fillcolor=\"" + color + "\"\n");
+		sb.append("\tlabel = \"{<T_NAME> " + escapeString(recordLabel + numberOfRows));
+
+		return sb.toString();
+	}
+
+	@Override
 	public String addRecordField(String fieldName, String field) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\t\n|<" + escapeString(fieldName) + "> " + escapeString(field));
