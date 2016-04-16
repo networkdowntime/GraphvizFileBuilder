@@ -137,5 +137,27 @@ public class GraphvizNeatoRenderer extends GraphvizRenderer {
 		return graph.toString();
 	}
 
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel) {
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowtail=vee, arrowhead=crow, arrowsize=1.0 ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
+
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowtail=\"" + ((open) ? "o" : "") + "normal\" arrowhead=\"none\" ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel, boolean open, boolean solid) {
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowtail=\"" + ((open) ? "o" : "") + "normal\" arrowhead=\"none\" style=\"" + ((solid) ? "solid" : "dotted") + "\" ];\n");
+		return graph.toString();
+	}
+
 
 }

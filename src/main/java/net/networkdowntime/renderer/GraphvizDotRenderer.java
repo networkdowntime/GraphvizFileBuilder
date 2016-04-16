@@ -122,7 +122,10 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 
 	@Override
 	public String addEdge(String record, String referencesRecord, String edgeLabel) {
-		return addEdge(record, referencesRecord, edgeLabel, false);
+
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"vee\" arrowtail=\"none\" ];\n");
+		return graph.toString();
 	}
 
 	@Override
@@ -137,6 +140,29 @@ public class GraphvizDotRenderer extends GraphvizRenderer {
 	public String addEdge(String record, String referencesRecord, String edgeLabel, boolean open, boolean solid) {
 		StringBuffer graph = new StringBuffer();
 		graph.append("\"" + encodeName(record) + "\"->\"" + encodeName(referencesRecord) + "\"" + " [ label = \"" + escapeString(edgeLabel) + "\" arrowhead=\"" + ((open) ? "o" : "") + "normal\" arrowtail=\"none\" style=\"" + ((solid) ? "solid" : "dotted") + "\" ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel) {
+
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ dir=both label = \"" + escapeString(edgeLabel) + "\" arrowtail=\"vee\" arrowhead=\"none\" ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel, boolean open) {
+
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ dir=both label = \"" + escapeString(edgeLabel) + "\" arrowtail=\"" + ((open) ? "o" : "") + "normal\" arrowhead=\"none\" ];\n");
+		return graph.toString();
+	}
+
+	@Override
+	public String addReversedEdge(String record, String referencesRecord, String edgeLabel, boolean open, boolean solid) {
+		StringBuffer graph = new StringBuffer();
+		graph.append("\"" + encodeName(referencesRecord) + "\"->\"" + encodeName(record) + "\"" + " [ dir=both label = \"" + escapeString(edgeLabel) + "\" arrowtail=\"" + ((open) ? "o" : "") + "normal\" arrowhead=\"none\" style=\"" + ((solid) ? "solid" : "dotted") + "\" ];\n");
 		return graph.toString();
 	}
 
