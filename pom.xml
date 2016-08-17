@@ -3,7 +3,7 @@
   <groupId>net.networkdowntime.graphviz</groupId>
   <artifactId>graphvizFileBuilder</artifactId>
   <version>0.0.2-SNAPSHOT</version>
-  <name>FileCreator</name>
+  <name>graphvizFileBuilder</name>
   
   <dependencies>
 		<dependency>

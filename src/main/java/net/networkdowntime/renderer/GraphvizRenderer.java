@@ -22,11 +22,15 @@ package net.networkdowntime.renderer;
 public abstract class GraphvizRenderer {
 
 	String encodeName(String name) {
-		return name.replaceAll("\\.", "_");
+		if (name.contains("\""))
+			System.out.println(name.replaceAll("\"", ""));
+		return name.replaceAll("\"", "").replaceAll("\\.", "_");
 	}
 
 	String escapeString(String string) {
-		return string.replaceAll("<", "\\\\<").replaceAll(">", "\\\\>");
+		if (string.contains("\""))
+			System.out.println(string.replaceAll("\"", ""));
+		return string.replaceAll("\"", "").replaceAll("<", "\\\\<").replaceAll(">", "\\\\>");
 	}
 	
 	public abstract String getHeader();
